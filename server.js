@@ -1,8 +1,8 @@
 const { initializeRabbitMQ } = require('./producer');
-const { pollMongoDB } = require('./monitor');
+const { pollMongoDB } = require('./src/monitor');
 
 (async () => {
     console.log('Starting system...');
-    await initializeRabbitMQ(); // Initialize RabbitMQ
-    pollMongoDB(); // Start polling MongoDB for new documents
+    await initializeRabbitMQ(); 
+    pollMongoDB(); 
 })();
