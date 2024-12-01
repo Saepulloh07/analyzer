@@ -2,11 +2,11 @@
 
 ## Gambaran Umum
 
-Aplikasi ini dirancang untuk mempermudah pemrosesan file **SOR (Smart Optical Reflectometer)** melalui pipeline yang melibatkan RabbitMQ sebagai message queue, MongoDB untuk manajemen dokumen, dan AWS S3 untuk penyimpanan file. Sistem ini memproses dokumen secara real-time menggunakan skrip Python untuk parsing dan pengolahan data.
+Aplikasi ini dirancang untuk mempermudah pemrosesan file **SOR (Smart Optical Reflectometer)** melalui pipeline yang melibatkan RabbitMQ sebagai message queue, MongoDB untuk manajemen dokumen, dan clouds storage untuk penyimpanan file. Sistem ini memproses dokumen secara real-time menggunakan skrip Python untuk parsing dan pengolahan data.
 
 ### Fitur Utama
 - **Polling MongoDB**: Memantau MongoDB secara terus-menerus untuk dokumen baru dengan `status: true`.
-- **Pengunduhan File**: Mengunduh file dari AWS S3 untuk diproses.
+- **Pengunduhan File**: Mengunduh file dari cloud storage untuk diproses.
 - **Parsing SOR**: Memproses file SOR untuk mengekstrak data optik penting.
 - **Message Queue**: Menggunakan RabbitMQ untuk antrian data hasil parsing.
 - **Integrasi Python**: Menggunakan Python untuk parsing file SOR.
@@ -29,7 +29,7 @@ Aplikasi ini dirancang untuk mempermudah pemrosesan file **SOR (Smart Optical Re
    - Memproses dokumen dan memperbarui statusnya.
 
 4. **Helper**:
-   - Menangani pengunduhan file dari AWS S3.
+   - Menangani pengunduhan file dari cloud storage.
    - Parsing file SOR menggunakan skrip Python.
    - Menghapus file sementara setelah diproses.
 
@@ -41,9 +41,13 @@ Aplikasi ini dirancang untuk mempermudah pemrosesan file **SOR (Smart Optical Re
 ## Persyaratan
 
 ### Perangkat Lunak
-- **Node.js** v14+
-- **Python** 3.7+
-- **MongoDB** v4+
+- **crcmod==1.7**
+- **dicttoxml==1.7.16**
+- **pyotdr==2.1.1**
+- **@aws-sdk/client-s3==3.701.0**
+- **amqplib==0.10.5**
+- **dotenv==16.4.5**
+- **mongodb==6.11.0**
 - **RabbitMQ**
 
 ### Variabel Lingkungan
